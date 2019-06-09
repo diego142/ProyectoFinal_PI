@@ -5,5 +5,5 @@ Se utilizo Boostrap y JQuery
 
 Liga: http://proyectofinalpi.epizy.com/
 
-user: invitado
+user: invitado - 
 pass: invitado
