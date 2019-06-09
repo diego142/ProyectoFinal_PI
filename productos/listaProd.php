@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<?php 
+        include("../includes/header.php");
+
+        if(!isset($_SESSION['user'])){
+            $_SESSION['mensaje'] = 2;
+            header('Location: ../index.php');
+            exit;
+        }
+    ?>    
+    <title>Productos</title>
+</head>
+<body>
+    <?php 
+        include("../includes/navbar_prod.php");
+        require("../db/conecta.php");
+
+        $con = conecta();
+        $query = "SELECT * FROM productos WHERE activo = 1 AND eliminado = 0";
+        $result = $con->query($query);
+
+     ?>
+
+    <div class="container col-md-12 mt-2" style="overflow:scroll; height: 800px;">
+        <h1> Productos (<?= $result->num_rows ?>) </h1>
+        <table class="table" style="font-size: 20px; ">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Costo</th>
+                    <th scope="col">Stock</th>
+                    <th class="text-center" scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="bg-light">
+            <?php
+                while($obj = $result->fetch_object())
+                {
+                    $id = $obj->id;
+                    $nombre = $obj->nombre;
+                    $costo = $obj->costo;       
+                    $stock = $obj->stock;       
+            ?>
+                <tr>
+                    <td> <?= $nombre ?></td>
+                    <td> <?= "$".$costo ?> </td>
+                    <td> <?= $stock ?> </td>
+                    <td class="text-center"> 
+                        <input type="button" value="Ver Detalles" class="btn btn-info col-md-3 btn-lg" onclick="location.href='ver_detalle.php?id=<?= $id ?>'"> 
+                        <input type="button" value="Actualizar" class="btn btn-success col-md-3 btn-lg" onclick="location.href='actualiza.php?id=<?= $id ?>'">
+                        <input type="button" value="Eliminar" class="btn btn-danger col-md-3 btn-lg" onclick="location.href='elimina.php?id=<?= $id ?>'">
+                    </td>
+                </tr>
+            <?php
+                }
+                $con->close();
+            ?>               
+
+            </tbody>
+        </table>
+    </div>
+
+<?php include("../includes/footer.php") ?>
+
+</body>
+</html>

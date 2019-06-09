@@ -1,0 +1,31 @@
+body{
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+.bg-card-blue{
+    background:  #0c3271;
+}
+
+nav{
+    font-size: 24px;
+}
+
+footer{
+    background: white;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+}
+
+h1{
+    color: white;
+}
+
+.navBG{
+    background: #2C3E50;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4CA1AF, #2C3E50);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4CA1AF, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
